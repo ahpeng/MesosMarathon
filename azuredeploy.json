@@ -4,7 +4,7 @@
     "parameters": {
         "linuxAdminUsername": {
             "type": "string",
-            "defaultValue": "adminuser",
+            "defaultValue": "azureuser",
             "metadata": {
                 "description": "User name for the Linux Virtual Machines (SSH or Password).Default value is adminuser"
             }
@@ -25,7 +25,7 @@
         },
         "windowsAdminUsername": {
             "type": "string",
-            "defaultValue": "adminuser",
+            "defaultValue": "azureuser",
             "metadata": {
                 "description": "User name for the Windows Jumpbox Virtual Machine (Password Only Supported).Default value is adminuser"
             }
@@ -39,7 +39,7 @@
         },
         "agentVMSize": {
             "type": "string",
-            "defaultValue": "Standard_A1",
+            "defaultValue": "Standard_A2",
             "metadata": {
                 "description": "The size of the Agent Virtual Machine. Ex: Standard_XX where XX can A1, A2, A3 etc"
             }
@@ -119,14 +119,6 @@
                 "description": "This is the windows sku used by the windows jumpbox"
             }
         },
-        "setSSHKeysLinuxConfiguration": {
-            "type": "int",
-            "defaultValue": 0,
-            "allowedValues": [ 0, 1 ],
-            "metadata": {
-                "description": "This setting controls whether Linux configuration with SSH Key is passed in VM PUT Payload.  Defaults to 1.  If SSH Key is blank, this must be set to 0."
-            }
-        },
         "vmsPerStorageAccount": {
             "type": "int",
             "defaultValue": 40,
@@ -139,7 +131,7 @@
             "metadata": {
                 "description": "The root location for all the configuring scripts"
             },
-            "defaultValue": "https://raw.githubusercontent.com/ahpeng/AzureStack-QuickStart-Templates/master/mesos-windows-jumpbox/parts/"
+            "defaultValue": "https://raw.githubusercontent.com/ahpeng/MesosMarathon/master/parts/"
         }
     },
     "variables": {
@@ -179,7 +171,8 @@
                 }
             }
         ],
-        "linuxConfiguration": "[variables('linuxConfigurations')[parameters('setSSHKeysLinuxConfiguration')]]",
+        "setSSHKeysLinuxConfiguration": 1,
+        "linuxConfiguration": "[variables('linuxConfigurations')[variables('setSSHKeysLinuxConfiguration')]]",
         "jumpboxPublicIPAddressName": "[concat(variables('orchestratorName'), '-jumpbox-ip-', '-', variables('nameSuffix'))]",
 
         "marathonEnabled": true,

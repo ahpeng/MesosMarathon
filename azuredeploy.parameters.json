@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "agentCount": {
-            "value": 1
+            "value": 2
         },
         "masterCount": {
             "value": 1
         },
         "agentVMSize": {
-            "value": "Standard_A1"
+            "value": "Standard_A2"
         },
         "masterVMSize": {
             "value": "Standard_A2"
         },
         "setSSHKeysLinuxConfiguration": {
-            "value": 0
+            "value": 1
         }
     }
 }
