@@ -280,7 +280,7 @@ fi
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF
 DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 CODENAME=$(lsb_release -cs)
-echo "deb http://repos.mesosphere.io/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list
+echo "deb http://dnscb37adevc33v2.chinaeast.cloudapp.chinacloudapi.cn/${DISTRO} ${CODENAME} main" | sudo tee /etc/apt/sources.list.d/mesosphere.list
 time sudo add-apt-repository -y ppa:openjdk-r/ppa
 time sudo apt-get -y update
 time sudo DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install openjdk-8-jre-headless
@@ -316,7 +316,7 @@ if ismaster ; then
   echo $quorum | sudo tee /etc/mesos-master/quorum
   hostname -i | sudo tee /etc/mesos-master/ip
   hostname | sudo tee /etc/mesos-master/hostname
-  echo 'Mesos Cluster on Microsoft Azure Stack' | sudo tee /etc/mesos-master/cluster
+  echo 'Mesos Cluster on Microsoft Azure Mooncake' | sudo tee /etc/mesos-master/cluster
 fi
 
 if ismaster  && [ "$MARATHONENABLED" == "true" ] ; then
