@@ -490,7 +490,7 @@ installMesosAdminRouter()
 {
   sudo DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install nginx-extras lua-cjson
   # the admin router comes from https://github.com/mesosphere/adminrouter-public
-  ADMIN_ROUTER_GITHUB_URL=https://raw.githubusercontent.com/anhowe/adminrouter-public/master
+  ADMIN_ROUTER_GITHUB_URL=https://markdemo.blob.core.chinacloudapi.cn/mesos/
   NGINX_CONF_PATH=/usr/share/nginx/conf
   sudo mkdir -p $NGINX_CONF_PATH
   wget --tries 4 --retry-connrefused --waitretry=15 -qO$NGINX_CONF_PATH/common.lua $ADMIN_ROUTER_GITHUB_URL/common.lua
@@ -519,7 +519,7 @@ installMesosDCOSCLI()
   sudo pip install virtualenv
   sudo -i -u $AZUREUSER mkdir $HOMEDIR/dcos
   for i in {1..10}; do
-    wget --tries 4 --retry-connrefused --waitretry=15 -qO- https://raw.githubusercontent.com/mesosphere/dcos-cli/master/bin/install/install-optout-dcos-cli.sh | sudo -i -u $AZUREUSER /bin/bash -s $HOMEDIR/dcos/. http://$VMNAME:5050 --add-path yes
+    wget --tries 4 --retry-connrefused --waitretry=15 -qO- https://markdemo.blob.core.chinacloudapi.cn/mesos/install-optout-dcos-cli.sh | sudo -i -u $AZUREUSER /bin/bash -s $HOMEDIR/dcos/. http://$VMNAME:5050 --add-path yes
     if [ $? -eq 0 ]
     then
       echo "Mesos DCOS-CLI installed successfully"
