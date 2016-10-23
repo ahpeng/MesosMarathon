@@ -220,6 +220,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main multiverse restri
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main multiverse restricted universe
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main multiverse restricted universe " >/tmp/sources.list
 sudo cp /tmp/sources.list /etc/apt/sources.list
+sudo apt-get update
 
 ################
 # Install Docker
